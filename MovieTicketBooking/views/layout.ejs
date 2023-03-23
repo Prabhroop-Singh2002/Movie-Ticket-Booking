@@ -1,0 +1,49 @@
+<%- include("header") -%>
+<body>
+    <h1><%= MovieTitle %></h1>
+<ul class="showcase">
+    <li>
+      <div class="seat"></div>
+      <small>N/A</small>
+    </li>
+
+    <!-- <li>
+      <div class="seat selected"></div>
+      <small>Selected</small>
+    </li> -->
+
+    <li>
+      <div class="seat occupied"></div>
+      <small>Occupied</small>
+    </li>
+  </ul>
+
+  <div class="container">
+    <div class="screen"></div>
+    <form action=<%= MovieTitle %> method="post" name="form">
+        <%MovieSeatList.forEach(function(item,idx){%>
+            <% if(idx===0 || idx===8 || idx===16 || idx===24 || idx===32 || idx===40){ %>
+                <div class="row">
+            <%}%>
+            <%if(item===1){%>
+                <div class="seat occupied"><%= idx %></div>
+            <%}else{%>
+                <div class="seat"><%= idx %></div>
+            <%}%>
+            <% if(idx===7 || idx===15 || idx===23 || idx===31 || idx===39 || idx===47){ %>
+                </div>
+            <%}%>
+        <%})%>
+        <div class="row"> 
+          <input type="tel" placeholder="Mobile Number" style="margin-top: 1rem;" name = "mobile" required>
+        </div>
+        <div class="row"> 
+          <input type="text" placeholder="name" style="margin-top: 1rem;" name = "name" required>
+        </div>
+        <div class="row"> 
+          <input type="text" placeholder="Format : 00-01-02..." style="margin-top: 1rem;" name = "seatNo" required>
+        </div>
+        <button type="submit" class="submitBtn" placeholder="Submit" onclick=this.form.submit()>Submit</button>
+    </form>
+
+</body>
